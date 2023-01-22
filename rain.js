@@ -1,22 +1,32 @@
-var canvas = document.createElement('canvas');
+let canvas = document.createElement('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 document.body.appendChild(canvas);
 
-var ctx = canvas.getContext("2d");
+let ctx = canvas.getContext("2d");
+let y = 50;
+const chars = "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ";
 
-var y = 0;
 function drow() {
+    y += 50;
+    blackTush();
+    writeASymbol();
+}
+
+function blackTush() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+function writeASymbol() {
     ctx.fillStyle = "#0F0";
     ctx.font = "50px serif";
-    y += 50;
     ctx.fillText(randomMatrixSymbol(), 30, y);
 }
 
 setInterval(drow, 100);
 
 function randomMatrixSymbol() {
-    const chars = "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ";
     const randomCharIndex = getRandomInt(chars.length);
     return chars[randomCharIndex];
 }
