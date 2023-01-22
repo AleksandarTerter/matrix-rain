@@ -8,6 +8,9 @@ let y = 50;
 const chars = "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ";
 
 function drow() {
+    if (y > canvas.height) {
+        y = 0;
+    }
     y += 50;
     blackTush();
     writeASymbol();
@@ -15,7 +18,7 @@ function drow() {
 
 function blackTush() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function writeASymbol() {
