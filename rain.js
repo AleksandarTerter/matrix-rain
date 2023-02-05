@@ -19,7 +19,7 @@ function drow() {
     blackTush();
     for (let colIndex = 0; colIndex < cols.length; colIndex += 1) {
         if (cols[colIndex] > rowsCount) {
-            cols[colIndex] = 0;
+            cols[colIndex] = -getRandomInt(rowsCount/4);
         }
         cols[colIndex] += 1;
         writeASymbol(colIndex * cellSizeInPx, cols[colIndex] * cellSizeInPx);
@@ -33,11 +33,11 @@ function blackTush() {
 
 function writeASymbol(x,y) {
     ctx.fillStyle = "#0F0";
-    ctx.font = `${cellSizeInPx * 1.2}px serif`;
+    ctx.font = `${cellSizeInPx * 1.1}px serif`;
     ctx.fillText(randomMatrixSymbol(), x, y);
 }
 
-setInterval(drow, 200);
+setInterval(drow, 100);
 
 function randomMatrixSymbol() {
     const randomCharIndex = getRandomInt(chars.length);
